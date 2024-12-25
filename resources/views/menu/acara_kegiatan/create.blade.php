@@ -12,10 +12,10 @@
                             <a href="<?= route(session()->get('role') . '.dashboard') ?>"><i class="bx bx-home-alt"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="<?= route(session()->get('role') . '.acara_kegiatan.index') ?>">Donatur</a>
+                            <a href="<?= route(session()->get('role') . '.acara_kegiatan.index') ?>">Acara dan Kegiatan</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <span class="text-dark">Tambah Donatur</span>
+                            <span class="text-dark">Tambah Acara dan Kegiatan</span>
                         </li>
                     </ol>
                 </nav>
