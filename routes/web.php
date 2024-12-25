@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AuthController, DashboardController, UserController, KecamatanController, RKATController, KeuanganController, DonaturController};
+use App\Http\Controllers\{AuthController, DashboardController, UserController, KecamatanController, RKATController, KeuanganController, DonaturController, PendanaanController, AcaraKegiatanController};
 
 // Routes untuk login dan logout
 Route::get('/', [AuthController::class, 'landingPage']);
@@ -98,5 +98,21 @@ Route::middleware(['auth.custom'])->group(function () {
         Route::get('admin/donatur/{id}/edit', [DonaturController::class, 'edit'])->name('admin.donatur.edit');
         Route::put('admin/donatur/{id}', [DonaturController::class, 'update'])->name('admin.donatur.update');
         Route::delete('admin/donatur/{id}', [DonaturController::class, 'destroy'])->name('admin.donatur.destroy');
+
+        // Pendanaan
+        Route::get('admin/pendanaan', [PendanaanController::class, 'index'])->name('admin.pendanaan.index');
+        Route::get('admin/pendanaan/create', [PendanaanController::class, 'create'])->name('admin.pendanaan.create');
+        Route::post('admin/pendanaan', [PendanaanController::class, 'store'])->name('admin.pendanaan.store');
+        Route::get('admin/pendanaan/{id}/edit', [PendanaanController::class, 'edit'])->name('admin.pendanaan.edit');
+        Route::put('admin/pendanaan/{id}', [PendanaanController::class, 'update'])->name('admin.pendanaan.update');
+        Route::delete('admin/pendanaan/{id}', [PendanaanController::class, 'destroy'])->name('admin.pendanaan.destroy');
+
+        // Pendanaan
+        Route::get('admin/acara-kegiatan', [AcaraKegiatanController::class, 'index'])->name('admin.acara_kegiatan.index');
+        Route::get('admin/acara-kegiatan/create', [AcaraKegiatanController::class, 'create'])->name('admin.acara_kegiatan.create');
+        Route::post('admin/acara-kegiatan', [AcaraKegiatanController::class, 'store'])->name('admin.acara_kegiatan.store');
+        Route::get('admin/acara-kegiatan/{id}/edit', [AcaraKegiatanController::class, 'edit'])->name('admin.acara_kegiatan.edit');
+        Route::put('admin/acara-kegiatan/{id}', [AcaraKegiatanController::class, 'update'])->name('admin.acara_kegiatan.update');
+        Route::delete('admin/acara-kegiatan/{id}', [AcaraKegiatanController::class, 'destroy'])->name('admin.acara_kegiatan.destroy');
     });
 });

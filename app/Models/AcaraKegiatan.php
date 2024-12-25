@@ -30,17 +30,22 @@ class AcaraKegiatan extends Model
         return $this->belongsTo(User::class, 'ditambahkan_oleh');
     }
 
-    public function rules()
+    public function rules($isButuhDana = false)
     {
+        if ($isButuhDana) {
+            return [
+                'nama_acara' => 'required|string',
+                'keterangan' => 'required|string',
+                'tanggal' => 'required|date',
+                'jumlah_dana' => 'required|integer',
+            ];
+        }
+
         return [
-            'nama_acara' => 'nullable|string',
-            'keterangan' => 'nullable|string',
-            'tanggal' => 'nullable|date',
-            'butuh_dana' => 'boolean',
-            'keuangan_id' => 'required|integer|exists:keuangan,keuangan_id',
+            'nama_acara' => 'required|string',
+            'keterangan' => 'required|string',
+            'tanggal' => 'required|date',
             'jumlah_dana' => 'nullable|integer',
-            'disetujui_ketua' => 'boolean',
-            'ditambahkan_oleh' => 'required|integer|exists:user,user_id',
         ];
     }
 
@@ -50,11 +55,7 @@ class AcaraKegiatan extends Model
             'nama_acara' => 'Nama Acara',
             'keterangan' => 'Keterangan',
             'tanggal' => 'Tanggal',
-            'butuh_dana' => 'Butuh Dana',
-            'keuangan_id' => 'ID Keuangan',
             'jumlah_dana' => 'Jumlah Dana',
-            'disetujui_ketua' => 'Disetujui Ketua',
-            'ditambahkan_oleh' => 'Ditambahkan Oleh',
         ];
     }
 }

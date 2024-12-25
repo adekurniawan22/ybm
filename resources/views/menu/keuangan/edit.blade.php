@@ -156,6 +156,20 @@
 
 @section('script')
     <script>
+        $(document).ready(function() {
+            $("#donatur_id").select2({
+                theme: "bootstrap4",
+                width: "100%",
+                placeholder: 'Pilih donatur',
+                allowClear: true,
+                language: {
+                    noResults: function() {
+                        return "Tidak ada data yang dicari";
+                    },
+                }
+            });
+        });
+
         function formatRibuan(input) {
             let value = input.value.replace(/[^0-9]/g, '');
             input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");

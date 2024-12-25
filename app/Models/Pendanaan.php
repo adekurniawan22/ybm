@@ -30,21 +30,38 @@ class Pendanaan extends Model
         return $this->belongsTo(User::class, 'ditambahkan_oleh');
     }
 
-    public function rules()
+    public function rules($isNewDonatur = false)
     {
+        if ($isNewDonatur) {
+            return [
+                'nama_donatur' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'jumlah' => 'required|integer',
+                'tanggal_transaksi' => 'required|date',
+                'file' => 'nullable|mimes:jpg,jpeg,png,pdf|max:5120',
+                'keterangan' => 'nullable|string',
+            ];
+        }
+
         return [
-            'donatur_id' => 'required|integer|exists:donatur,donatur_id',
-            'keuangan_id' => 'required|integer|exists:keuangan,keuangan_id',
-            'ditambahkan_oleh' => 'required|integer|exists:user,user_id',
+            'donatur_id' => 'required',
+            'jumlah' => 'required|integer',
+            'tanggal_transaksi' => 'required|date',
+            'file' => 'nullable|mimes:jpg,jpeg,png,pdf|max:5120',
+            'keterangan' => 'nullable|string',
         ];
     }
 
     public function attributes()
     {
         return [
-            'donatur_id' => 'ID Donatur',
-            'keuangan_id' => 'ID Keuangan',
-            'ditambahkan_oleh' => 'Ditambahkan Oleh',
+            'nama_donatur' => 'Nama Donatur',
+            'email' => 'Email',
+            'donatur_id' => 'Donatur',
+            'tanggal_transaksi' => 'Tanggal Transaksi',
+            'jumlah' => 'Jumlah',
+            'file' => 'File',
+            'keterangan' => 'Keterangan'
         ];
     }
 }

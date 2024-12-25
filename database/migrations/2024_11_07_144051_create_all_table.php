@@ -56,13 +56,13 @@ return new class extends Migration
             $table->string('keterangan')->nullable();
             $table->dateTime('tanggal')->nullable();
             $table->boolean('butuh_dana')->default(0);
-            $table->unsignedInteger('keuangan_id')->default(0);
+            $table->unsignedInteger('keuangan_id')->nullable();
             $table->integer('jumlah_dana')->nullable();
             $table->boolean('disetujui_ketua')->default(0);
             $table->unsignedInteger('ditambahkan_oleh');
             $table->timestamps();
 
-            $table->foreign('keuangan_id')->references('keuangan_id')->on('keuangan');
+            $table->foreign('keuangan_id')->references('keuangan_id')->on('keuangan')->onDelete('set null');;
             $table->foreign('ditambahkan_oleh')->references('user_id')->on('user');
         });
 
