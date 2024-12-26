@@ -21,9 +21,9 @@
         @php
             $dashboardItems = [
                 [
-                    'title' => 'Acara Kegiatan',
-                    'value' => $jumlahAcaraKegiatan,
-                    'icon' => 'bi bi-calendar-event',
+                    'title' => 'ZIS',
+                    'value' => $jumlahZis,
+                    'icon' => 'bi bi-hand-thumbs-up',
                 ],
                 [
                     'title' => 'Donatur',
@@ -31,44 +31,14 @@
                     'icon' => 'bi bi-person-check',
                 ],
                 [
-                    'title' => 'Kecamatan',
-                    'value' => $jumlahKecamatan,
-                    'icon' => 'bi bi-map',
-                ],
-                [
-                    'title' => 'Keuangan',
-                    'value' => $jumlahKeuangan,
-                    'icon' => 'bi bi-wallet2',
-                ],
-                [
-                    'title' => 'Mitra',
-                    'value' => $jumlahMitra,
-                    'icon' => 'bi bi-person-lines-fill',
-                ],
-                [
                     'title' => 'Pendanaan',
                     'value' => $jumlahPendanaan,
                     'icon' => 'bi bi-cash-stack',
                 ],
                 [
-                    'title' => 'Proposal',
-                    'value' => $jumlahProposal,
-                    'icon' => 'bi bi-file-earmark-text',
-                ],
-                [
-                    'title' => 'RKAT',
-                    'value' => $jumlahRKAT,
-                    'icon' => 'bi bi-clipboard-data',
-                ],
-                [
-                    'title' => 'User',
-                    'value' => $jumlahUser,
-                    'icon' => 'bi bi-person-circle',
-                ],
-                [
-                    'title' => 'ZIS',
-                    'value' => $jumlahZis,
-                    'icon' => 'bi bi-hand-thumbs-up',
+                    'title' => 'Acara Kegiatan',
+                    'value' => $jumlahAcaraKegiatan,
+                    'icon' => 'bi bi-calendar-event',
                 ],
             ];
         @endphp

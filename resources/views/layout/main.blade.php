@@ -107,7 +107,7 @@
                         Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="confirm-delete" class="btn btn-success">Hapus</button>
+                        <button type="button" id="confirm-delete" class="btn btn-danger">Hapus</button>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <a href="{{ route('logout') }}" type="button" id="confirm-delete"
-                            class="btn btn-success">Ya</a>
+                            class="btn btn-danger">Ya</a>
                     </div>
                 </div>
             </div>

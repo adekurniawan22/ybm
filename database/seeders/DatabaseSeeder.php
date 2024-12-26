@@ -12,10 +12,42 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('user')->insert([
             [
-                'nama' => 'Irma Putri',
+                'nama' => 'Super Admin',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('password'),
                 'role' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Jajang',
+                'email' => 'ketua@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'ketua',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Asep',
+                'email' => 'distribusi@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'distribusi',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Irma',
+                'email' => 'bendahara@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'bendahara',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Faiz',
+                'email' => 'publikasi@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'publikasi',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

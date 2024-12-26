@@ -13,49 +13,87 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 // Routes untuk dashboard
 Route::middleware(['auth.custom'])->group(function () {
 
-    // // Routes untuk Owner
-    // Route::middleware(['role:manajer_produksi'])->group(function () {
-    //     // Dashboard
-    //     Route::get('manajer-produksi/dashboard', [DashboardController::class, 'manajer_produksi'])->name('manajer_produksi.dashboard');
+    Route::middleware(['role:ketua'])->group(function () {
+        // Dashboard
+        Route::get('ketua/dashboard', [DashboardController::class, 'ketua'])->name('ketua.dashboard');
 
-    //     // CRUD Supplier
-    //     Route::get('manajer-produksi/supplier', [SupplierController::class, 'index'])->name('manajer_produksi.supplier.index');
-    //     Route::get('manajer-produksi/supplier/create', [SupplierController::class, 'create'])->name('manajer_produksi.supplier.create');
-    //     Route::post('manajer-produksi/supplier', [SupplierController::class, 'store'])->name('manajer_produksi.supplier.store');
-    //     Route::get('manajer-produksi/supplier/{id}/edit', [SupplierController::class, 'edit'])->name('manajer_produksi.supplier.edit');
-    //     Route::put('manajer-produksi/supplier/{id}', [SupplierController::class, 'update'])->name('manajer_produksi.supplier.update');
-    //     Route::delete('manajer-produksi/supplier/{id}', [SupplierController::class, 'destroy'])->name('manajer_produksi.supplier.destroy');
+        // User
+        Route::get('ketua/user', [UserController::class, 'index'])->name('ketua.user.index');
+        Route::get('ketua/user/create', [UserController::class, 'create'])->name('ketua.user.create');
+        Route::post('ketua/user', [UserController::class, 'store'])->name('ketua.user.store');
+        Route::get('ketua/user/{id}/edit', [UserController::class, 'edit'])->name('ketua.user.edit');
+        Route::put('ketua/user/{id}', [UserController::class, 'update'])->name('ketua.user.update');
+        Route::delete('ketua/user/{id}', [UserController::class, 'destroy'])->name('ketua.user.destroy');
 
-    //     // CRUD BahanBaku
-    //     Route::get('manajer-produksi/bahan-baku', [BahanBakuController::class, 'index'])->name('manajer_produksi.bahan_baku.index');
-    //     Route::get('manajer-produksi/bahan-baku/create', [BahanBakuController::class, 'create'])->name('manajer_produksi.bahan_baku.create');
-    //     Route::post('manajer-produksi/bahan-baku', [BahanBakuController::class, 'store'])->name('manajer_produksi.bahan_baku.store');
-    //     Route::get('manajer-produksi/bahan-baku/{id}/edit', [BahanBakuController::class, 'edit'])->name('manajer_produksi.bahan_baku.edit');
-    //     Route::put('manajer-produksi/bahan-baku/{id}', [BahanBakuController::class, 'update'])->name('manajer_produksi.bahan_baku.update');
-    //     Route::delete('manajer-produksi/bahan-baku/{id}', [BahanBakuController::class, 'destroy'])->name('manajer_produksi.bahan_baku.destroy');
-    //     Route::get('manajer-produksi/bahan-baku/histori', [BahanBakuController::class, 'getDataMonthYear'])->name('manajer_produksi.bahan_baku.getDataMonthYear');
+        // Kecamatan
+        Route::get('ketua/kecamatan', [KecamatanController::class, 'index'])->name('ketua.kecamatan.index');
+        Route::get('ketua/kecamatan/create', [KecamatanController::class, 'create'])->name('ketua.kecamatan.create');
+        Route::post('ketua/kecamatan', [KecamatanController::class, 'store'])->name('ketua.kecamatan.store');
+        Route::get('ketua/kecamatan/{id}/edit', [KecamatanController::class, 'edit'])->name('ketua.kecamatan.edit');
+        Route::put('ketua/kecamatan/{id}', [KecamatanController::class, 'update'])->name('ketua.kecamatan.update');
+        Route::delete('ketua/kecamatan/{id}', [KecamatanController::class, 'destroy'])->name('ketua.kecamatan.destroy');
 
-    //     // CRUD History BahanBaku
-    //     Route::get('manajer-produksi/transaksi', [BahanBakuTransaksiController::class, 'index'])->name('manajer_produksi.transaksi.index');
-    //     Route::get('manajer-produksi/transaksi/create', [BahanBakuTransaksiController::class, 'create'])->name('manajer_produksi.transaksi.create');
-    //     Route::post('manajer-produksi/transaksi', [BahanBakuTransaksiController::class, 'store'])->name('manajer_produksi.transaksi.store');
-    //     Route::get('manajer-produksi/transaksi/{id}/edit', [BahanBakuTransaksiController::class, 'edit'])->name('manajer_produksi.transaksi.edit');
-    //     Route::put('manajer-produksi/transaksi/{id}', [BahanBakuTransaksiController::class, 'update'])->name('manajer_produksi.transaksi.update');
-    //     Route::delete('manajer-produksi/transaksi/{id}', [BahanBakuTransaksiController::class, 'destroy'])->name('manajer_produksi.transaksi.destroy');
-    // });
+        // RKAT
+        Route::get('ketua/rkat', [RKATController::class, 'index'])->name('ketua.rkat.index');
+        Route::get('ketua/rkat/edit', [RKATController::class, 'edit'])->name('ketua.rkat.edit');
+        Route::put('ketua/rkat/edit', [RKATController::class, 'update'])->name('ketua.rkat.update');
 
-    // Route::middleware(['role:supervisor'])->group(function () {
-    //     // Dashboard
-    //     Route::get('supervisor/dashboard', [DashboardController::class, 'supervisor'])->name('supervisor.dashboard');
+        // Acara Kegiatan
+        Route::get('ketua/acara-kegiatan', [AcaraKegiatanController::class, 'index'])->name('ketua.acara_kegiatan.index');
+        Route::get('ketua/acara-kegiatan/create', [AcaraKegiatanController::class, 'create'])->name('ketua.acara_kegiatan.create');
+        Route::post('ketua/acara-kegiatan', [AcaraKegiatanController::class, 'store'])->name('ketua.acara_kegiatan.store');
+        Route::get('ketua/acara-kegiatan/{id}/edit', [AcaraKegiatanController::class, 'edit'])->name('ketua.acara_kegiatan.edit');
+        Route::put('ketua/acara-kegiatan/{id}', [AcaraKegiatanController::class, 'update'])->name('ketua.acara_kegiatan.update');
+        Route::delete('ketua/acara-kegiatan/{id}', [AcaraKegiatanController::class, 'destroy'])->name('ketua.acara_kegiatan.destroy');
+    });
 
-    //     // CRUD History BahanBaku
-    //     Route::get('supervisor/transaksi', [BahanBakuTransaksiController::class, 'index'])->name('supervisor.transaksi.index');
-    //     Route::get('supervisor/transaksi/create', [BahanBakuTransaksiController::class, 'create'])->name('supervisor.transaksi.create');
-    //     Route::post('supervisor/transaksi', [BahanBakuTransaksiController::class, 'store'])->name('supervisor.transaksi.store');
-    //     Route::get('supervisor/transaksi/{id}/edit', [BahanBakuTransaksiController::class, 'edit'])->name('supervisor.transaksi.edit');
-    //     Route::put('supervisor/transaksi/{id}', [BahanBakuTransaksiController::class, 'update'])->name('supervisor.transaksi.update');
-    //     Route::delete('supervisor/transaksi/{id}', [BahanBakuTransaksiController::class, 'destroy'])->name('supervisor.transaksi.destroy');
-    // });
+    Route::middleware(['role:distribusi'])->group(function () {
+        // Dashboard
+        Route::get('distribusi/dashboard', [DashboardController::class, 'distribusi'])->name('distribusi.dashboard');
+    });
+
+    Route::middleware(['role:bendahara'])->group(function () {
+        // Dashboard
+        Route::get('bendahara/dashboard', [DashboardController::class, 'bendahara'])->name('bendahara.dashboard');
+
+        // Keuangan
+        Route::get('bendahara/keuangan', [KeuanganController::class, 'index'])->name('bendahara.keuangan.index');
+        Route::get('bendahara/keuangan/create', [KeuanganController::class, 'create'])->name('bendahara.keuangan.create');
+        Route::post('bendahara/keuangan', [KeuanganController::class, 'store'])->name('bendahara.keuangan.store');
+        Route::get('bendahara/keuangan/{id}/edit', [KeuanganController::class, 'edit'])->name('bendahara.keuangan.edit');
+        Route::put('bendahara/keuangan/{id}', [KeuanganController::class, 'update'])->name('bendahara.keuangan.update');
+        Route::delete('bendahara/keuangan/{id}', [KeuanganController::class, 'destroy'])->name('bendahara.keuangan.destroy');
+        Route::put('bendahara/keuangan/verifikasi/{id}', [KeuanganController::class, 'verifikasi'])->name('bendahara.keuangan.verifikasi');
+    });
+
+    Route::middleware(['role:publikasi'])->group(function () {
+        // Dashboard
+        Route::get('publikasi/dashboard', [DashboardController::class, 'publikasi'])->name('publikasi.dashboard');
+
+        // Donatur
+        Route::get('publikasi/donatur', [DonaturController::class, 'index'])->name('publikasi.donatur.index');
+        Route::get('publikasi/donatur/create', [DonaturController::class, 'create'])->name('publikasi.donatur.create');
+        Route::post('publikasi/donatur', [DonaturController::class, 'store'])->name('publikasi.donatur.store');
+        Route::get('publikasi/donatur/{id}/edit', [DonaturController::class, 'edit'])->name('publikasi.donatur.edit');
+        Route::put('publikasi/donatur/{id}', [DonaturController::class, 'update'])->name('publikasi.donatur.update');
+        Route::delete('publikasi/donatur/{id}', [DonaturController::class, 'destroy'])->name('publikasi.donatur.destroy');
+
+        // Pendanaan
+        Route::get('publikasi/pendanaan', [PendanaanController::class, 'index'])->name('publikasi.pendanaan.index');
+        Route::get('publikasi/pendanaan/create', [PendanaanController::class, 'create'])->name('publikasi.pendanaan.create');
+        Route::post('publikasi/pendanaan', [PendanaanController::class, 'store'])->name('publikasi.pendanaan.store');
+        Route::get('publikasi/pendanaan/{id}/edit', [PendanaanController::class, 'edit'])->name('publikasi.pendanaan.edit');
+        Route::put('publikasi/pendanaan/{id}', [PendanaanController::class, 'update'])->name('publikasi.pendanaan.update');
+        Route::delete('publikasi/pendanaan/{id}', [PendanaanController::class, 'destroy'])->name('publikasi.pendanaan.destroy');
+
+        // Acara Kegiatan
+        Route::get('publikasi/acara-kegiatan', [AcaraKegiatanController::class, 'index'])->name('publikasi.acara_kegiatan.index');
+        Route::get('publikasi/acara-kegiatan/create', [AcaraKegiatanController::class, 'create'])->name('publikasi.acara_kegiatan.create');
+        Route::post('publikasi/acara-kegiatan', [AcaraKegiatanController::class, 'store'])->name('publikasi.acara_kegiatan.store');
+        Route::get('publikasi/acara-kegiatan/{id}/edit', [AcaraKegiatanController::class, 'edit'])->name('publikasi.acara_kegiatan.edit');
+        Route::put('publikasi/acara-kegiatan/{id}', [AcaraKegiatanController::class, 'update'])->name('publikasi.acara_kegiatan.update');
+        Route::delete('publikasi/acara-kegiatan/{id}', [AcaraKegiatanController::class, 'destroy'])->name('publikasi.acara_kegiatan.destroy');
+    });
 
     Route::middleware(['role:admin'])->group(function () {
         // Dashboard
@@ -107,7 +145,7 @@ Route::middleware(['auth.custom'])->group(function () {
         Route::put('admin/pendanaan/{id}', [PendanaanController::class, 'update'])->name('admin.pendanaan.update');
         Route::delete('admin/pendanaan/{id}', [PendanaanController::class, 'destroy'])->name('admin.pendanaan.destroy');
 
-        // Pendanaan
+        // Acara Kegiatan
         Route::get('admin/acara-kegiatan', [AcaraKegiatanController::class, 'index'])->name('admin.acara_kegiatan.index');
         Route::get('admin/acara-kegiatan/create', [AcaraKegiatanController::class, 'create'])->name('admin.acara_kegiatan.create');
         Route::post('admin/acara-kegiatan', [AcaraKegiatanController::class, 'store'])->name('admin.acara_kegiatan.store');

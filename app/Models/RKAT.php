@@ -5,7 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rkat extends Model
+class RKAT extends Model
 {
     protected $table = 'rkat';
     protected $primaryKey = 'rkat_id';

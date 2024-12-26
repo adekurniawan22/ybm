@@ -66,12 +66,16 @@ class AuthController extends Controller
     // Arahkan berdasarkan role user
     protected function redirectBasedOnRole($role)
     {
-        if ($role == 'manajer_produksi') {
-            return redirect()->route(session()->get('role') . '.dashboard')->with('success', 'Selamat datang di menu Manajer Produksi');
-        } elseif ($role == 'supervisor') {
-            return redirect()->route('supervisor.dashboard')->with('success', 'Selamat datang di menu Supervisor');
-        } elseif ($role == 'admin') {
+        if ($role == 'admin') {
             return redirect()->route('admin.dashboard')->with('success', 'Selamat datang di menu Admin');
+        } elseif ($role == 'ketua') {
+            return redirect()->route('ketua.dashboard')->with('success', 'Selamat datang di menu Ketua');
+        } elseif ($role == 'distribusi') {
+            return redirect()->route('distribusi.dashboard')->with('success', 'Selamat datang di menu Distribusi');
+        } elseif ($role == 'bendahara') {
+            return redirect()->route('bendahara.dashboard')->with('success', 'Selamat datang di menu Bendahara');
+        } elseif ($role == 'publikasi') {
+            return redirect()->route('publikasi.dashboard')->with('success', 'Selamat datang di menu Publikasi');
         } else {
             return redirect()->back()->withErrors(['error' => 'Role tidak dikenali']);
         }
